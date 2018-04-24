@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -16,10 +17,10 @@ namespace BandChecker.Model
 
         private static IDbConnection db = new SqlConnection(connectionString);
 
-        public List<Band> getBands()
+        public ObservableCollection<Band> getBands()
         {
             string sql = "Select * from Band order by naam";
-            return (List<Band>)db.Query<Band>(sql);
+            return (ObservableCollection<Band>)db.Query<Band>(sql);
         }
 
         public void Updatesoort(Band band)

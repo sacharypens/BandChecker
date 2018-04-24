@@ -36,7 +36,7 @@ namespace BandChecker.ViewModel
         public BandViewModel()
         {
             BandDataService ds = new BandDataService();
-            
+            Bands = ds.getBands();
         }
     }
 }
