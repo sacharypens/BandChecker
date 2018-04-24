@@ -73,6 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Band.cs" />
+    <Compile Include="Model\LiedjeDataService.cs" />
+    <Compile Include="Model\LidDataService.cs" />
+    <Compile Include="Model\BandDataService.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\Lid.cs" />
     <Compile Include="Model\Liedje.cs" />
