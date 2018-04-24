@@ -17,7 +17,7 @@ namespace BandChecker.ViewModel
 
         public MainWindowViewModel()
         {
-            FrameSource = "BandPage.xaml";
+            FrameSource = "BandView.xaml";
             
         }
     }
