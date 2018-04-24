@@ -16,7 +16,7 @@ namespace BandChecker.Model
 
         private static IDbConnection db = new SqlConnection(connectionString);
 
-        private List<Band> getBands()
+        public List<Band> getBands()
         {
             string sql = "Select * from Band order by naam";
             return (List<Band>)db.Query<Band>(sql);
