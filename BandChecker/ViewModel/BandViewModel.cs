@@ -10,9 +10,9 @@ namespace BandChecker.ViewModel
 {
     class BandViewModel: BaseViewModel
     {
-        private ObservableCollection<Band> Bands;
+        private ObservableCollection<Band> bands;
 
-        public ObservableCollection<Band> bands
+        public ObservableCollection<Band> Bands
         {
             get { return bands; }
             set

@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\BandViewModel.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
@@ -123,7 +124,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Extensions\" />
     <Folder Include="Messages\" />
     <Folder Include="obj\Debug\" />
   </ItemGroup>

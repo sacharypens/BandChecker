@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using BandChecker.Extensions;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,8 +20,10 @@ namespace BandChecker.Model
 
         public ObservableCollection<Band> getBands()
         {
-            string sql = "Select * from Band order by naam";
-            return (ObservableCollection<Band>)db.Query<Band>(sql);
+            string sql = "Select * from bandchecker.Band order by naam";
+            ObservableCollection<Band> bands = db.Query<Band>(sql).ToObservableCollection();
+
+            return bands;
         }
 
         public void Updatesoort(Band band)

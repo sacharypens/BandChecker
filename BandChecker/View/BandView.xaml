@@ -4,17 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BandChecker"
+        xmlns:viewmodel="clr-namespace:BandChecker.ViewModel"
         mc:Ignorable="d"
-        DataContext=""
-        Title="BandPage" Height="450" Width="800">
+        Title="BandPage" Height="auto" Width="800">
     <Page.Resources>
-        
+        <viewmodel:BandViewModel x:Key="BandViewModel"/>
     </Page.Resources>
-    <DockPanel>
-        <ListView DockPanel.Dock="Left" ItemsSource="{Binding Bands}">
-            
+    <DockPanel DataContext="{StaticResource BandViewModel}">
+        <ListView Style="{StaticResource listViewBandList}" DockPanel.Dock="Left" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Naam}" FontSize="12" FontWeight="Bold"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
-        <Grid>
+        <Grid Style="{StaticResource gridBandinfo}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="auto"/>
@@ -26,13 +30,14 @@
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0">naam:</Label>
-            
-            <Label Grid.Column="0" Grid.Row="1">Opgericht op:</Label>
-
-            <Label Grid.Column="0" Grid.Row="2">genre:</Label>
-
-            <Label Grid.Column="0" Grid.Row="3">omschrijving:</Label>
+            <TextBlock Style="{StaticResource textblockBandinfoTitel}" Grid.Column="0" Grid.Row="0">naam:</TextBlock>
+            <TextBlock Style="{StaticResource textblockBandinfo}" Grid.Column="1" Grid.Row="0" Text="{Binding SelectedBand.Naam}"/>
+            <TextBlock Style="{StaticResource textblockBandinfoTitel}" Grid.Column="0" Grid.Row="1">Opgericht op:</TextBlock>
+            <TextBlock Style="{StaticResource textblockBandinfo}" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedBand.Opgericht}"/>
+            <TextBlock Style="{StaticResource textblockBandinfoTitel}" Grid.Column="0" Grid.Row="2">genre:</TextBlock>
+            <TextBlock Style="{StaticResource textblockBandinfo}" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedBand.Genre}"/>
+            <TextBlock Style="{StaticResource textblockBandinfoTitel}" Grid.Column="0" Grid.Row="3">omschrijving:</TextBlock>
+            <TextBlock Style="{StaticResource textblockBandinfo}" TextWrapping="WrapWithOverflow" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedBand.Omschrijving}"/>
         </Grid>
     </DockPanel>
 </Page>
