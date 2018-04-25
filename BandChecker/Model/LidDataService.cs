@@ -22,7 +22,7 @@ namespace BandChecker.Model
             return (List<Lid>)db.Query<Lid>(sql);
         }
 
-        public void Updatesoort(Lid lid)
+        public void UpdateLid(Lid lid)
         {
             // SQL statement update
             string sql = "Update Lid set naam = @naam, voornaam = @voornaam, geboortedatum = @geboortedatum, instrument = @instrument, bandId = @bandId where id = @id";
@@ -38,7 +38,7 @@ namespace BandChecker.Model
             });
         }
 
-        public void InsertSoort(Lid lid)
+        public void InsertLid(Lid lid)
         {
             // SQL statement insert
             string sql = "Insert into Lid(naam, voornaam, geboortedatum, instrument, bandId) values (@naam, @voornaam, @geboortedatum, @instrument, @bandId)";
@@ -54,7 +54,7 @@ namespace BandChecker.Model
             });
         }
 
-        public void DeleteSoort(Lid lid)
+        public void DeleteLid(Lid lid)
         {
             // SQL statement delete
             string sql = "Delete Lid where id = @id";

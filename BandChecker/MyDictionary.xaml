@@ -3,16 +3,17 @@
                     xmlns:local="clr-namespace:BandChecker">
     <!-- toolbar style -->
     <Style x:Key="toolbar" TargetType="{x:Type ToolBar}">
-        <Setter Property="Height" Value="50" />
+        
         <Setter Property="Padding" Value="5" />
-        <Setter Property="Background" Value="#4E87D4" />
+        <Setter Property="Background" Value="LightGray" />
         <Setter Property="Foreground" Value="White" />
     </Style>
     <Style x:Key="buttonStyle" TargetType="Button">
-        <Setter Property="Width" Value="50" />
-        <Setter Property="Height" Value="25" />
-        <Setter Property="Margin" Value="5" />
+        <Setter Property="Width" Value="80" />
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="Padding" Value="10" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="White"/>
     </Style>
     <Style x:Key="BandstackPanel" TargetType="StackPanel">
         <Setter Property="Width" Value="75"/>

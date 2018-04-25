@@ -26,7 +26,7 @@ namespace BandChecker.Model
             return bands;
         }
 
-        public void Updatesoort(Band band)
+        public void UpdateBand(Band band)
         {
             // SQL statement update
             string sql = "Update Band set naam = @naam, omschrijving = @omschrijving, opgericht = @opgericht, genre = @genre where id = @id";
@@ -41,7 +41,7 @@ namespace BandChecker.Model
             });
         }
 
-        public void InsertSoort(Band band)
+        public void InsertBand(Band band)
         {
             // SQL statement insert
             string sql = "Insert into Band(naam, omschrijving, opgericht, genre) values (@naam, @omschrijving, @opgericht, @genre)";
@@ -56,7 +56,7 @@ namespace BandChecker.Model
             });
         }
 
-        public void DeleteSoort(Band band)
+        public void DeleteBand(Band band)
         {
             // SQL statement delete
             string sql = "Delete Band where id = @id";

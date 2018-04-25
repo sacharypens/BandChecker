@@ -24,10 +24,11 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <TextBlock Style="{StaticResource textblockBandinfoTitel}" Grid.Column="0" Grid.Row="0">naam:</TextBlock>
@@ -38,6 +39,7 @@
             <TextBlock Style="{StaticResource textblockBandinfo}" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedBand.Genre}"/>
             <TextBlock Style="{StaticResource textblockBandinfoTitel}" Grid.Column="0" Grid.Row="3">omschrijving:</TextBlock>
             <TextBlock Style="{StaticResource textblockBandinfo}" TextWrapping="WrapWithOverflow" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedBand.Omschrijving}"/>
+            <Button Grid.Column="0" Grid.Row="4" Content="Wijzig" Command="{Binding WijzigCommand}"/>
         </Grid>
     </DockPanel>
 </Page>

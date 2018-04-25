@@ -1,0 +1,40 @@
+﻿<Window x:Class="BandChecker.View.BandDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BandChecker.View"
+        DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=BandDetailWindowViewModel}"
+        xmlns:viewmodel="clr-namespace:BandChecker.ViewModel"
+        mc:Ignorable="d"
+        Title="Banddetails aanpassen" Height="500" Width="500">
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="Naam:"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding SelectedBand.Naam, Mode=TwoWay}"/>
+        
+        <TextBlock Grid.Column="0" Grid.Row="2" Text="Opgericht:"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding SelectedBand.Opgericht, Mode=TwoWay}" />
+
+        <TextBlock Grid.Column="0" Grid.Row="3" Text="Genre:"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding SelectedBand.Genre, Mode=TwoWay}" />
+
+        <TextBlock Grid.Column="0" Grid.Row="4" Text="Omschrijving:"/>
+        <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding SelectedBand.Omschrijving, Mode=TwoWay}" TextWrapping="WrapWithOverflow" />
+
+        <Button Grid.Column="0" Grid.Row="5" Command="{Binding UpdateCommand}" Content="Bewaren"/>
+    </Grid>
+</Window>

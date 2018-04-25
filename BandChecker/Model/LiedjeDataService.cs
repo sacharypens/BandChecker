@@ -22,7 +22,7 @@ namespace BandChecker.Model
             return (List<Liedje>)db.Query<Liedje>(sql);
         }
 
-        public void Updatesoort(Liedje liedje)
+        public void UpdateLiedje(Liedje liedje)
         {
             // SQL statement update
             string sql = "Update Liedje set naam = @naam, duurtijd = @duurtijd bandId = @bandId where id = @id";
@@ -36,7 +36,7 @@ namespace BandChecker.Model
             });
         }
 
-        public void InsertSoort(Liedje liedje)
+        public void InsertLiedje(Liedje liedje)
         {
             // SQL statement insert
             string sql = "Insert into Liedje(naam, duurtijd, bandId) values (@naam, @duurtijd, @bandId)";
@@ -50,7 +50,7 @@ namespace BandChecker.Model
             });
         }
 
-        public void DeleteSoort(Liedje liedje)
+        public void DeleteLiedje(Liedje liedje)
         {
             // SQL statement delete
             string sql = "Delete Liedje where id = @id";
