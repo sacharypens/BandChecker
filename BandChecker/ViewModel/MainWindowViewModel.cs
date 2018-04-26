@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BandChecker.ViewModel
 {
@@ -19,14 +20,26 @@ namespace BandChecker.ViewModel
 
         public MainWindowViewModel()
         {
-            FrameSource = "BandView.xaml";
-            Messenger.Default.Register<GoToLiedjePageMessage>(this, OnMessageReceived);
-
+            FrameSource = "LiedjePage.xaml";
+            LiedjesCommand = new BaseCommand(GoToLiedjePage);
         }
 
-        public void OnMessageReceived(GoToLiedjePageMessage message)
+        private ICommand liedjesCommand;
+        public ICommand LiedjesCommand
         {
-            FrameSource = "LiedjeView.xaml";
+            get
+            {
+                return liedjesCommand;
+            }
+            set
+            {
+                liedjesCommand = value;
+            }
+        }
+
+        public void GoToLiedjePage()
+        {
+            frameSource = "LiedjePage.xaml";
         }
     }
 

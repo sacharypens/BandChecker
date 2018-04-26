@@ -100,7 +100,6 @@ namespace BandChecker.ViewModel
 
             WijzigCommand = new BaseCommand(WijzigenBand);
             ToevoegenCommand = new BaseCommand(ToevoegenBand);
-            LiedjesCommand = new BaseCommand(GaNaarLiedjes);
 
             Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
         }
@@ -124,7 +123,7 @@ namespace BandChecker.ViewModel
 
                 dialogService.ShowDetailDialog();
             }
-            LeesBands();
+            
         }
 
         private void ToevoegenBand()
@@ -132,12 +131,7 @@ namespace BandChecker.ViewModel
             SelectedBand = new Band();
             Messenger.Default.Send<Band>(SelectedBand);
             dialogService.ShowDetailDialog();
-            LeesBands();
-        }
-
-        private void GaNaarLiedjes()
-        {
-            Messenger.Default.Send<GoToLiedjePageMessage>( new GoToLiedjePageMessage());
+            
         }
     }
 }

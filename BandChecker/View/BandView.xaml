@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BandChecker"
         xmlns:viewmodel="clr-namespace:BandChecker.ViewModel"
-      DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=BandViewModel}"
+
         mc:Ignorable="d"
         Title="BandPage" Height="auto" Width="800">
-    
+    <Page.Resources>
+        <viewmodel:BandViewModel x:Key="BandViewModel"/>
+    </Page.Resources>
 
     
-    <DockPanel >
+    <DockPanel DataContext="{StaticResource BandViewModel}">
         <ListView Style="{StaticResource listViewBandList}" DockPanel.Dock="Left" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -50,8 +52,6 @@
             </ScrollViewer>
             <Button Style="{StaticResource buttonBandinfoToevoegen}" Grid.Column="1" Grid.Row="4" Content="Nieuwe band" Command="{Binding ToevoegenCommand}"/>
             <Button Style="{StaticResource buttonBandinfoWijzig}" Grid.Column="1" Grid.Row="4" Content="Wijzig" Command="{Binding WijzigCommand}"/>
-            <Button Style="{StaticResource buttonBandinfoLiedjes}" Grid.Column="1" Grid.Row="4" Content="Liedjes" Command="{Binding LiedjesCommand}" />
-            <Button Style="{StaticResource buttonBandinfoLeden}" Grid.Column="0" Grid.Row="4" Content="Leden" Command="{Binding LedenCommand}" />
         </Grid>
     </DockPanel>
 </Page>

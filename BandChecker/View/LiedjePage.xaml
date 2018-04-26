@@ -1,0 +1,45 @@
+﻿<Page x:Class="BandChecker.View.LiedjePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BandChecker.View"
+      xmlns:viewmodel="clr-namespace:BandChecker.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LiedjePage">
+
+    <Page.Resources>
+        <viewmodel:LiedjeViewModel x:Key="LiedjeViewModel"/>
+    </Page.Resources>
+    <Grid Style="{StaticResource gridLiedje}" DataContext="{StaticResource LiedjeViewModel}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="140"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand}" Style="{StaticResource listviewLiedje}"  Grid.Column="0" Grid.Row="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Naam}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView ItemsSource="{Binding Liedjes}" SelectedItem="{Binding SelectedLiedje}" Grid.Column="1" Grid.Row="0" Style="{StaticResource listviewLiedje}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Naam}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Column="2" Grid.Row="0" Style="{StaticResource stackpanelLiedje}" DockPanel.Dock="Right">
+            <Button Style="{StaticResource buttonLiedje}" Content="Wijzig"/>
+            <Button Style="{StaticResource buttonLiedje}" Content="Nieuw liedje"/>
+            
+        </StackPanel>
+    </Grid>
+</Page>

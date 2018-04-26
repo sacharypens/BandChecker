@@ -1,6 +1,8 @@
-﻿using Dapper;
+﻿using BandChecker.Extensions;
+using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -16,10 +18,19 @@ namespace BandChecker.Model
 
         private static IDbConnection db = new SqlConnection(connectionString);
 
-        private List<Liedje> getLiedjes()
+        public ObservableCollection<Liedje> getLiedjes()
         {
             string sql = "Select * from bandchecker.Liedje order by naam";
-            return (List<Liedje>)db.Query<Liedje>(sql);
+            ObservableCollection<Liedje> liedjes = db.Query<Liedje>(sql).ToObservableCollection();
+            return liedjes;
+        }
+
+        public ObservableCollection<Liedje> GetLiedjesByBand(Band band)
+        {
+            string sql = "select * from bandchecker.Liedje where bandId2 = " + band.Id + " order by naam";
+            ObservableCollection<Liedje> liedjes = db.Query<Liedje>(sql).ToObservableCollection();
+
+            return liedjes;
         }
 
         public void UpdateLiedje(Liedje liedje)

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace BandChecker.View
 {
     /// <summary>
-    /// Interaction logic for LiedjeView.xaml
+    /// Interaction logic for LiedjePage.xaml
     /// </summary>
-    public partial class LiedjeView : Page
+    public partial class LiedjePage : Page
     {
-        public LiedjeView()
+        public LiedjePage()
         {
             InitializeComponent();
         }
