@@ -61,6 +61,7 @@
     <Compile Include="Extensions\DialogService.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\Messenger.cs" />
+    <Compile Include="Messages\GoToLiedjePageMessage.cs" />
     <Compile Include="Messages\UpdateFinishedMessage.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\BandDetailWindowViewModel.cs" />
@@ -70,6 +71,9 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\BandDetailWindow.xaml.cs">
       <DependentUpon>BandDetailWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LiedjeView.xaml.cs">
+      <DependentUpon>LiedjeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -93,6 +97,10 @@
     <Compile Include="View\BandView.xaml.cs">
       <DependentUpon>BandView.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\LiedjeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

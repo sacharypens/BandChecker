@@ -79,6 +79,19 @@ namespace BandChecker.ViewModel
                
             }
         }
+
+        private ICommand liedjesCommand;
+        public ICommand LiedjesCommand
+        {
+            get
+            {
+                return liedjesCommand;
+            }
+            set
+            {
+                liedjesCommand = value;
+            }
+        }
         public BandViewModel()
         {
             LeesBands();
@@ -87,6 +100,7 @@ namespace BandChecker.ViewModel
 
             WijzigCommand = new BaseCommand(WijzigenBand);
             ToevoegenCommand = new BaseCommand(ToevoegenBand);
+            LiedjesCommand = new BaseCommand(GaNaarLiedjes);
 
             Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
         }
@@ -119,6 +133,11 @@ namespace BandChecker.ViewModel
             Messenger.Default.Send<Band>(SelectedBand);
             dialogService.ShowDetailDialog();
             LeesBands();
+        }
+
+        private void GaNaarLiedjes()
+        {
+            Messenger.Default.Send<GoToLiedjePageMessage>( new GoToLiedjePageMessage());
         }
     }
 }

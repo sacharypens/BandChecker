@@ -18,6 +18,7 @@
     <Style x:Key="BandstackPanel" TargetType="StackPanel">
         <Setter Property="Width" Value="75"/>
     </Style>
+    <!-- standard page style-->
     
     <!-- band page style-->
 
@@ -68,9 +69,11 @@
     <Style x:Key="textblockBandDetail" TargetType="{x:Type TextBlock}">
         <Setter Property="Margin" Value="0, 10,0,0"/>
     </Style>
+    
     <Style x:Key="textboxBandDetail" TargetType="{x:Type TextBox}">
         <Setter Property="Height" Value="30"/>
     </Style>
+    
     <Style x:Key="textboxOmschrijvingBandDetail" TargetType="{x:Type TextBox}">
         
     </Style>
@@ -79,9 +82,28 @@
         <Setter Property="Width" Value="80"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
     </Style>
+    
     <Style x:Key="buttonBandDetailVerwijderen" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="30"/>
         <Setter Property="Width" Value="80"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- liedje page style-->
+    <Style x:Key="gridLiedje" TargetType="{x:Type Grid}">
+        <Setter Property="Margin" Value="20"/>
+    </Style>
+
+    <Style x:Key="stackpanelLiedje" TargetType="{x:Type StackPanel}">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Margin" Value="20"/>
+    </Style>
+    <Style x:Key="buttonLiedje" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="0,0,0,20"/>
+        <Setter Property="Height" Value="30" />
+    </Style>
+    <Style x:Key="listviewLiedje" TargetType="{x:Type ListView}">
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="Margin" Value="20"/>
     </Style>
 </ResourceDictionary>
