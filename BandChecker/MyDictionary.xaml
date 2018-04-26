@@ -44,7 +44,7 @@
         <Setter Property="Margin" Value="0, 5,0,0"/>
     </Style>
 
-    <Style x:Key="buttonBandinfo" TargetType="{x:Type Button}">
+    <Style x:Key="buttonBandinfoWijzig" TargetType="{x:Type Button}">
         <Setter Property="Width" Value="75"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="HorizontalAlignment" Value="Right" />
@@ -53,6 +53,16 @@
         <Setter Property="Width" Value="75"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="buttonBandinfoLiedjes" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="75"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+    <Style x:Key="buttonBandinfoLeden" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="75"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="HorizontalAlignment" Value="Left" />
     </Style>
     <!-- bandDetailWindow style-->
     <Style x:Key="textblockBandDetail" TargetType="{x:Type TextBlock}">

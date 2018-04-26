@@ -49,7 +49,9 @@
             <TextBlock Style="{StaticResource textblockBandinfo}" TextWrapping="WrapWithOverflow" Text="{Binding SelectedBand.Omschrijving}"/>
             </ScrollViewer>
             <Button Style="{StaticResource buttonBandinfoToevoegen}" Grid.Column="1" Grid.Row="4" Content="Nieuwe band" Command="{Binding ToevoegenCommand}"/>
-            <Button Style="{StaticResource buttonBandinfo}" Grid.Column="1" Grid.Row="4" Content="Wijzig" Command="{Binding WijzigCommand}"/>
+            <Button Style="{StaticResource buttonBandinfoWijzig}" Grid.Column="1" Grid.Row="4" Content="Wijzig" Command="{Binding WijzigCommand}"/>
+            <Button Style="{StaticResource buttonBandinfoLiedjes}" Grid.Column="1" Grid.Row="4" Content="Liedjes" Command="{Binding LiedjesCommand}" />
+            <Button Style="{StaticResource buttonBandinfoLeden}" Grid.Column="0" Grid.Row="4" Content="Leden" Command="{Binding LedenCommand}" />
         </Grid>
     </DockPanel>
 </Page>
