@@ -9,10 +9,12 @@
         mc:Ignorable="d"
         Title="Banddetails aanpassen" Height="500" Width="500">
     <Grid Margin="15">
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="40"/>
@@ -20,7 +22,6 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
-            
         </Grid.RowDefinitions>
         
         <TextBlock Grid.Column="0" Grid.Row="1" Text="Naam:"/>
