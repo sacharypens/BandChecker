@@ -18,18 +18,19 @@ namespace BandChecker.Model
 
         private List<Liedje> getLiedjes()
         {
-            string sql = "Select * from Liedje order by naam";
+            string sql = "Select * from bandchecker.Liedje order by naam";
             return (List<Liedje>)db.Query<Liedje>(sql);
         }
 
         public void UpdateLiedje(Liedje liedje)
         {
             // SQL statement update
-            string sql = "Update Liedje set naam = @naam, duurtijd = @duurtijd bandId = @bandId where id = @id";
+            string sql = "Update bandchecker.Liedje set naam = @naam, duurtijd = @duurtijd bandId = @bandId where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
             {
+                liedje.Id,
                 liedje.Naam,
                 liedje.Duurtijd,
                 liedje.BandId
@@ -39,7 +40,7 @@ namespace BandChecker.Model
         public void InsertLiedje(Liedje liedje)
         {
             // SQL statement insert
-            string sql = "Insert into Liedje(naam, duurtijd, bandId) values (@naam, @duurtijd, @bandId)";
+            string sql = "Insert into bandchecker.Liedje(naam, duurtijd, bandId) values (@naam, @duurtijd, @bandId)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
@@ -53,7 +54,7 @@ namespace BandChecker.Model
         public void DeleteLiedje(Liedje liedje)
         {
             // SQL statement delete
-            string sql = "Delete Liedje where id = @id";
+            string sql = "Delete bandchecker.Liedje where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new { liedje.Id });

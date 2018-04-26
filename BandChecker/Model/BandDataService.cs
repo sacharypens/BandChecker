@@ -29,11 +29,12 @@ namespace BandChecker.Model
         public void UpdateBand(Band band)
         {
             // SQL statement update
-            string sql = "Update Band set naam = @naam, omschrijving = @omschrijving, opgericht = @opgericht, genre = @genre where id = @id";
+            string sql = "Update bandchecker.Band set naam = @naam, omschrijving = @omschrijving, opgericht = @opgericht, genre = @genre where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
             {
+                band.Id,
                 band.Naam,
                 band.Omschrijving,
                 band.Genre,
@@ -44,7 +45,7 @@ namespace BandChecker.Model
         public void InsertBand(Band band)
         {
             // SQL statement insert
-            string sql = "Insert into Band(naam, omschrijving, opgericht, genre) values (@naam, @omschrijving, @opgericht, @genre)";
+            string sql = "Insert into bandchecker.Band(naam, omschrijving, opgericht, genre) values (@naam, @omschrijving, @opgericht, @genre)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
@@ -59,7 +60,7 @@ namespace BandChecker.Model
         public void DeleteBand(Band band)
         {
             // SQL statement delete
-            string sql = "Delete Band where id = @id";
+            string sql = "Delete bandchecker.Band where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new { band.Id });
