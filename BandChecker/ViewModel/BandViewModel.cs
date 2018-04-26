@@ -48,17 +48,45 @@ namespace BandChecker.ViewModel
             set
             {
                 wijzigCommand = value;
+               
             }
         }
 
+        private ICommand verwijderenCommand;
+        public ICommand VerwijderenCommand
+        {
+            get
+            {
+                return verwijderenCommand;
+            }
+            set
+            {
+                verwijderenCommand = value;
+                
+            }
+        }
+
+        private ICommand toevoegenCommand;
+        public ICommand ToevoegenCommand
+        {
+            get
+            {
+                return toevoegenCommand;
+            }
+            set
+            {
+                toevoegenCommand = value;
+               
+            }
+        }
         public BandViewModel()
         {
-            BandDataService ds = new BandDataService();
-            Bands = ds.getBands();
+            LeesBands();
 
             dialogService = new DialogService();
 
             WijzigCommand = new BaseCommand(WijzigenBand);
+            ToevoegenCommand = new BaseCommand(ToevoegenBand);
 
             Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
         }
@@ -66,6 +94,12 @@ namespace BandChecker.ViewModel
         private void OnMessageReceived(UpdateFinishedMessage message)
         {
             dialogService.CloseDetailDialog();
+        }
+
+        private void LeesBands()
+        {
+            BandDataService ds = new BandDataService();
+            Bands = ds.getBands();
         }
 
         private void WijzigenBand()
@@ -76,6 +110,15 @@ namespace BandChecker.ViewModel
 
                 dialogService.ShowDetailDialog();
             }
+            LeesBands();
+        }
+
+        private void ToevoegenBand()
+        {
+            SelectedBand = new Band();
+            Messenger.Default.Send<Band>(SelectedBand);
+            dialogService.ShowDetailDialog();
+            LeesBands();
         }
     }
 }

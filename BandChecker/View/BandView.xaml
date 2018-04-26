@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BandChecker"
         xmlns:viewmodel="clr-namespace:BandChecker.ViewModel"
+      DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=BandViewModel}"
         mc:Ignorable="d"
         Title="BandPage" Height="auto" Width="800">
     
-    <Page.Resources>
-        <viewmodel:BandViewModel x:Key="BandViewModel"/>
-    </Page.Resources>
+
     
-    <DockPanel DataContext="{StaticResource BandViewModel}">
+    <DockPanel >
         <ListView Style="{StaticResource listViewBandList}" DockPanel.Dock="Left" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -29,10 +28,10 @@
             </Grid.ColumnDefinitions>
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="180"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
@@ -46,9 +45,11 @@
             <TextBlock Style="{StaticResource textblockBandinfo}" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedBand.Genre}"/>
             
             <TextBlock Style="{StaticResource textblockBandinfoTitel}" Grid.Column="0" Grid.Row="3">omschrijving:</TextBlock>
-            <TextBlock Style="{StaticResource textblockBandinfo}" TextWrapping="WrapWithOverflow" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedBand.Omschrijving}"/>
-            
-            <Button Grid.Column="0" Grid.Row="4" Content="Wijzig" Command="{Binding WijzigCommand}"/>
+            <ScrollViewer  Grid.Column="1" Grid.Row="3">
+            <TextBlock Style="{StaticResource textblockBandinfo}" TextWrapping="WrapWithOverflow" Text="{Binding SelectedBand.Omschrijving}"/>
+            </ScrollViewer>
+            <Button Style="{StaticResource buttonBandinfoToevoegen}" Grid.Column="1" Grid.Row="4" Content="Nieuwe band" Command="{Binding ToevoegenCommand}"/>
+            <Button Style="{StaticResource buttonBandinfo}" Grid.Column="1" Grid.Row="4" Content="Wijzig" Command="{Binding WijzigCommand}"/>
         </Grid>
     </DockPanel>
 </Page>

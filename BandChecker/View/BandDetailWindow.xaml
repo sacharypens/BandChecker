@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
@@ -24,18 +24,19 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         
-        <TextBlock Grid.Column="0" Grid.Row="1" Text="Naam:"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding SelectedBand.Naam, Mode=TwoWay}"/>
-        
-        <TextBlock Grid.Column="0" Grid.Row="2" Text="Opgericht:"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding SelectedBand.Opgericht, Mode=TwoWay}" />
+        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="1" Text="Naam:"/>
+        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedBand.Naam, Mode=TwoWay}"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="3" Text="Genre:"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding SelectedBand.Genre, Mode=TwoWay}" />
+        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="2" Text="Opgericht:"/>
+        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedBand.Opgericht, Mode=TwoWay}" />
 
-        <TextBlock Grid.Column="0" Grid.Row="4" Text="Omschrijving:"/>
+        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="3" Text="Genre:"/>
+        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedBand.Genre, Mode=TwoWay}" />
+
+        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="4" Text="Omschrijving:"/>
         <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding SelectedBand.Omschrijving, Mode=TwoWay}" TextWrapping="WrapWithOverflow" />
 
-        <Button Grid.Column="0" Grid.Row="5" Command="{Binding UpdateCommand}" Content="Bewaren"/>
+        <Button Style="{StaticResource buttonBandDetail}" Grid.Column="1" Grid.Row="5" Command="{Binding UpdateCommand}" Content="Bewaren"/>
+        <Button Style="{StaticResource buttonBandDetailVerwijderen}" Grid.Column="1" Grid.Row="5" Command="{Binding DeleteCommand}" Content="Verwijderen"/>
     </Grid>
 </Window>

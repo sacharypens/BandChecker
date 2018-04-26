@@ -27,19 +27,41 @@ namespace BandChecker.ViewModel
         }
 
         public ICommand UpdateCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
         public BandDetailWindowViewModel()
         {
             Messenger.Default.Register<Band>(this, OnBandReceived);
+            
 
             UpdateCommand = new BaseCommand(UpdateBand);
+            DeleteCommand = new BaseCommand(DeleteBand);
         }
 
+        
         private void UpdateBand()
         {
             BandDataService ds = new BandDataService();
-            ds.UpdateBand(SelectedBand);
+            
+            if(SelectedBand.Id == 0)
+            {
+                ds.InsertBand(selectedBand);
+                Messenger.Default.Send<UpdateFinishedMessage>(new UpdateFinishedMessage(UpdateFinishedMessage.MessageType.Inserted));
 
-            Messenger.Default.Send<UpdateFinishedMessage>(new UpdateFinishedMessage());
+            }
+            else
+            {
+                ds.UpdateBand(SelectedBand);
+                Messenger.Default.Send<UpdateFinishedMessage>(new UpdateFinishedMessage(UpdateFinishedMessage.MessageType.Updated));
+            }
+
+            
+        }
+
+        private void DeleteBand()
+        {
+            BandDataService ds = new BandDataService();
+            ds.DeleteBand(SelectedBand);
+            Messenger.Default.Send<UpdateFinishedMessage>(new UpdateFinishedMessage(UpdateFinishedMessage.MessageType.Deleted));
         }
 
         private void OnBandReceived(Band band)

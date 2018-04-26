@@ -41,5 +41,37 @@
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Width" Value="300" />
         <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0, 5,0,0"/>
+    </Style>
+
+    <Style x:Key="buttonBandinfo" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="75"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+    <Style x:Key="buttonBandinfoToevoegen" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="75"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    <!-- bandDetailWindow style-->
+    <Style x:Key="textblockBandDetail" TargetType="{x:Type TextBlock}">
+        <Setter Property="Margin" Value="0, 10,0,0"/>
+    </Style>
+    <Style x:Key="textboxBandDetail" TargetType="{x:Type TextBox}">
+        <Setter Property="Height" Value="30"/>
+    </Style>
+    <Style x:Key="textboxOmschrijvingBandDetail" TargetType="{x:Type TextBox}">
+        
+    </Style>
+    <Style x:Key="buttonBandDetail" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+    </Style>
+    <Style x:Key="buttonBandDetailVerwijderen" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 </ResourceDictionary>
