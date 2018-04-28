@@ -102,11 +102,17 @@ namespace BandChecker.ViewModel
             ToevoegenCommand = new BaseCommand(ToevoegenBand);
 
             Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
+            
         }
 
         private void OnMessageReceived(UpdateFinishedMessage message)
         {
             dialogService.CloseDetailDialog();
+            if(message.Type == UpdateFinishedMessage.MessageType.Deleted
+                || message.Type == UpdateFinishedMessage.MessageType.Inserted)
+            {
+                LeesBands();
+            }
         }
 
         private void LeesBands()

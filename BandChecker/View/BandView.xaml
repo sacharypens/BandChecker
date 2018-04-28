@@ -5,15 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BandChecker"
         xmlns:viewmodel="clr-namespace:BandChecker.ViewModel"
-
+        DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=BandViewModel}"
         mc:Ignorable="d"
         Title="BandPage" Height="auto" Width="800">
-    <Page.Resources>
-        <viewmodel:BandViewModel x:Key="BandViewModel"/>
-    </Page.Resources>
 
-    
-    <DockPanel DataContext="{StaticResource BandViewModel}">
+    <DockPanel>
         <ListView Style="{StaticResource listViewBandList}" DockPanel.Dock="Left" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand}">
             <ListView.ItemTemplate>
                 <DataTemplate>

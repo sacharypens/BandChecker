@@ -140,6 +140,7 @@ namespace BandChecker.ViewModel
             {
                 Messenger.Default.Send<Liedje>(SelectedLiedje);
                 dialogService.ShowLiedjeDetailDialog();
+                FilterLiedjes();
             }
         }
 
