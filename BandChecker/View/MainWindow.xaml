@@ -14,9 +14,10 @@
         <ToolBar DockPanel.Dock="Top" Style="{StaticResource toolbar}">
             <Button Content="Backwards" Style="{StaticResource buttonStyle}"></Button>
             <Button Content="Forwards" Style="{StaticResource buttonStyle}"></Button>
-            <Button Content="Liedjes" Style="{StaticResource buttonStyle}" Command="{Binding LiedjesCommand}"></Button>
-            <Button Content="Leden" Style="{StaticResource buttonStyle}"></Button>
             <Button Content="Bands" Style="{StaticResource buttonStyle}" Command="{Binding BandsCommand}"></Button>
+            <Button Content="Liedjes" Style="{StaticResource buttonStyle}" Command="{Binding LiedjesCommand}"></Button>
+            <Button Content="Leden" Style="{StaticResource buttonStyle}" Command="{Binding LedenCommand}"></Button>
+            
         </ToolBar>
         
         <Frame DockPanel.Dock="Bottom" Source="{Binding FrameSource}" Name="frame" NavigationUIVisibility="Hidden">

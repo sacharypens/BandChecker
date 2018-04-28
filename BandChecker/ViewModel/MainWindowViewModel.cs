@@ -44,12 +44,24 @@ namespace BandChecker.ViewModel
             }
         }
 
+        private ICommand ledenCommand;
+        public ICommand LedenCommand
+        {
+            get
+            {
+                return ledenCommand;
+            }
+            set
+            {
+                ledenCommand = value;
+            }
+        }
         public MainWindowViewModel()
         {
             FrameSource = "LiedjePage.xaml";
             BandsCommand = new BaseCommand(GoToBandsView);
             LiedjesCommand = new BaseCommand(GoToLiedjePage);
-            
+            LedenCommand = new BaseCommand(GoToLidView);
         }
 
         public void GoToLiedjePage()
@@ -62,6 +74,10 @@ namespace BandChecker.ViewModel
             FrameSource = "BandView.xaml";
         }
 
+        public void GoToLidView()
+        {
+            FrameSource = "LidView.xaml";
+        }
     }
 
 

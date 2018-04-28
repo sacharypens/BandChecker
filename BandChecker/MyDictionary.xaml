@@ -106,4 +106,12 @@
         <Setter Property="Width" Value="auto"/>
         <Setter Property="Margin" Value="20"/>
     </Style>
+    
+    <!-- Lid View style-->
+    <Style x:Key="comboboxLid" TargetType="{x:Type ComboBox}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="300"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="20,0,0,0"/>
+    </Style>
 </ResourceDictionary>

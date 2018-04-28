@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace BandChecker.ViewModel
 {
-    class BandViewModel: BaseViewModel
+    class LidViewModel : BaseViewModel
     {
         private DialogService dialogService;
 
@@ -35,6 +35,37 @@ namespace BandChecker.ViewModel
             {
                 selectedBand = value;
                 NotifyPropertyChanged();
+                FilterLeden();
+            }
+        }
+
+        private ObservableCollection<Lid> leden;
+        public ObservableCollection<Lid> Leden {
+            get { return leden; }
+            set
+            {
+                leden = value;
+                NotifyPropertyChanged();
+            }
+        }
+        private ObservableCollection<String> formatedLeden = new ObservableCollection<string>();
+        public ObservableCollection<String> FormatedLeden
+        {
+            get { return formatedLeden; }
+            set
+            {
+                formatedLeden = value;
+                NotifyPropertyChanged();
+            }
+        }
+        private Lid selectedLid;
+        public Lid SelectedLid
+        {
+            get { return selectedLid; }
+            set
+            {
+                selectedLid = value;
+                NotifyPropertyChanged();
             }
         }
 
@@ -48,7 +79,7 @@ namespace BandChecker.ViewModel
             set
             {
                 wijzigCommand = value;
-               
+
             }
         }
 
@@ -62,7 +93,7 @@ namespace BandChecker.ViewModel
             set
             {
                 verwijderenCommand = value;
-                
+
             }
         }
 
@@ -76,57 +107,53 @@ namespace BandChecker.ViewModel
             set
             {
                 toevoegenCommand = value;
-               
+
             }
         }
 
-
-        public BandViewModel()
+        public LidViewModel()
         {
-            LeesBands();
-
+            LeesBand();
+            
             dialogService = new DialogService();
 
-            WijzigCommand = new BaseCommand(WijzigenBand);
-            ToevoegenCommand = new BaseCommand(ToevoegenBand);
+            WijzigCommand = new BaseCommand(WijzigLid);
+            ToevoegenCommand = new BaseCommand(ToevoegenLid);
 
             Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
-            
         }
 
         private void OnMessageReceived(UpdateFinishedMessage message)
         {
-            dialogService.CloseDetailDialog();
-            if(message.Type == UpdateFinishedMessage.MessageType.Deleted
-                || message.Type == UpdateFinishedMessage.MessageType.Inserted)
-            {
-                LeesBands();
-            }
+            //TODO OnMessage aanvullen
         }
-
-        private void LeesBands()
+        
+        public void LeesBand()
         {
             BandDataService ds = new BandDataService();
             Bands = ds.getBands();
         }
 
-        private void WijzigenBand()
+        private void FilterLeden()
         {
-            if(SelectedBand != null)
+            LidDataService ds = new LidDataService();
+            Leden = ds.GetLedenByBand(SelectedBand);
+            FormatedLeden.Clear();
+            foreach (var lid in Leden)
             {
-                Messenger.Default.Send<Band>(SelectedBand);
-
-                dialogService.ShowDetailDialog();
+                string text = lid.Voornaam + " " + lid.Naam + " - geboren op " + lid.Geboortedatum.ToShortDateString() + " - speelt de volgende instrumenten: " + lid.Instrument;
+                FormatedLeden.Add(text);
             }
-            
         }
 
-        private void ToevoegenBand()
+        private void WijzigLid()
         {
-            SelectedBand = new Band();
-            Messenger.Default.Send<Band>(SelectedBand);
-            dialogService.ShowDetailDialog();
-            
+            //TODO  WijzigLid
+        }
+
+        private void ToevoegenLid()
+        {
+            //TODO ToevoegenLid
         }
     }
 }
