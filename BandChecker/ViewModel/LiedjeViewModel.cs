@@ -118,7 +118,11 @@ namespace BandChecker.ViewModel
         private void OnMessageReceived(UpdateFinishedMessage message)
         {
             dialogService.CloseLiedjeDetailDialog();
-            
+            if(message.Type == UpdateFinishedMessage.MessageType.Deleted
+                || message.Type == UpdateFinishedMessage.MessageType.Inserted)
+            {
+                FilterLiedjes();
+            }
         }
 
         public void LeesBands()
@@ -140,7 +144,7 @@ namespace BandChecker.ViewModel
             {
                 Messenger.Default.Send<Liedje>(SelectedLiedje);
                 dialogService.ShowLiedjeDetailDialog();
-                FilterLiedjes();
+                
             }
         }
 
@@ -149,7 +153,7 @@ namespace BandChecker.ViewModel
             SelectedLiedje = new Liedje(SelectedBand.Id);
             Messenger.Default.Send<Liedje>(SelectedLiedje);
             dialogService.ShowLiedjeDetailDialog();
-            FilterLiedjes();
+            
         }
     }
 }
