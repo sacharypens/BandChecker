@@ -27,10 +27,10 @@
             </ComboBox.ItemTemplate>
             
         </ComboBox>
-        <ListView ItemsSource="{Binding FormatedLeden}" SelectedItem="{Binding SelectedLid}" Grid.Column="0" Grid.Row="1" Style="{StaticResource listviewLiedje}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+        <ListView ItemsSource="{Binding Leden}" SelectedItem="{Binding SelectedLid}" Grid.Column="0" Grid.Row="1" Style="{StaticResource listviewLiedje}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding}"/>
+                    <Label Content="{Binding Naam}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

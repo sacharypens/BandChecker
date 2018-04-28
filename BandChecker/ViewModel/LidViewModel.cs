@@ -121,13 +121,24 @@ namespace BandChecker.ViewModel
             ToevoegenCommand = new BaseCommand(ToevoegenLid);
 
             Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
+            Messenger.Default.Register<BandUpdatedMessage>(this, OnBandUpdatedMessageReceived);
         }
 
         private void OnMessageReceived(UpdateFinishedMessage message)
         {
-            //TODO OnMessage aanvullen
+            dialogService.CloseLidDetailDialog();
+            if(message.Type == UpdateFinishedMessage.MessageType.Deleted
+                || message.Type == UpdateFinishedMessage.MessageType.Inserted)
+            {
+                FilterLeden();
+            }
         }
         
+        private void OnBandUpdatedMessageReceived(BandUpdatedMessage message)
+        {
+            LeesBand();
+        }
+
         public void LeesBand()
         {
             BandDataService ds = new BandDataService();
@@ -136,6 +147,10 @@ namespace BandChecker.ViewModel
 
         private void FilterLeden()
         {
+            if(SelectedBand == null)
+            {
+                SelectedBand = new Band();
+            }
             LidDataService ds = new LidDataService();
             Leden = ds.GetLedenByBand(SelectedBand);
             FormatedLeden.Clear();
@@ -148,12 +163,19 @@ namespace BandChecker.ViewModel
 
         private void WijzigLid()
         {
-            //TODO  WijzigLid
+            if(SelectedLid != null)
+            {
+                Messenger.Default.Send<Lid>(SelectedLid);
+                dialogService.ShowLidDetailDialog();
+            }
         }
 
         private void ToevoegenLid()
         {
-            //TODO ToevoegenLid
+            SelectedLid = new Lid(selectedBand.Id);
+            SelectedLid.Geboortedatum = DateTime.Today;
+            Messenger.Default.Send<Lid>(SelectedLid);
+            dialogService.ShowLidDetailDialog();
         }
     }
 }

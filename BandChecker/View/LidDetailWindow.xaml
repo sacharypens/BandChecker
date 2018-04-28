@@ -1,0 +1,41 @@
+﻿<Window x:Class="BandChecker.View.LidDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BandChecker.View"
+        DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=LidDetailWindowViewModel}"
+        mc:Ignorable="d"
+        Title="Liddetails aanpassen" Height="500" Width="500">
+    <Grid Margin="15">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="1" Text="Voornaam:"/>
+        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedLid.Voornaam, Mode=TwoWay}"/>
+
+        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="2" Text="Naam:"/>
+        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedLid.Naam, Mode=TwoWay}" />
+
+        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="3" Text="Geboortedatum:"/>
+        
+        <DatePicker Grid.Column="1" Grid.Row="3" SelectedDate="{Binding SelectedLid.Geboortedatum, Mode=TwoWay}"></DatePicker>
+        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="4" Text="Instrumenten:"/>
+        <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding SelectedLid.Instrument, Mode=TwoWay}" TextWrapping="WrapWithOverflow" />
+
+        <Button Style="{StaticResource buttonBandDetail}" Grid.Column="1" Grid.Row="5" Command="{Binding UpdateCommand}" Content="Bewaren"/>
+        <Button Style="{StaticResource buttonBandDetailVerwijderen}" Grid.Column="1" Grid.Row="5" Command="{Binding DeleteCommand}" Content="Verwijderen"/>
+    </Grid>
+</Window>

@@ -61,18 +61,23 @@
     <Compile Include="Extensions\DialogService.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\Messenger.cs" />
+    <Compile Include="Messages\BandUpdatedMessage.cs" />
     <Compile Include="Messages\UpdateFinishedMessage.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\BandDetailWindowViewModel.cs" />
     <Compile Include="ViewModel\BandViewModel.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\LidDetailWindowViewModel.cs" />
     <Compile Include="ViewModel\LidViewModel.cs" />
     <Compile Include="ViewModel\LiedjeDetailWindowViewModel.cs" />
     <Compile Include="ViewModel\LiedjeViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\BandDetailWindow.xaml.cs">
       <DependentUpon>BandDetailWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LidDetailWindow.xaml.cs">
+      <DependentUpon>LidDetailWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LidView.xaml.cs">
       <DependentUpon>LidView.xaml</DependentUpon>
@@ -105,6 +110,10 @@
     <Compile Include="View\BandView.xaml.cs">
       <DependentUpon>BandView.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\LidDetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LidView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

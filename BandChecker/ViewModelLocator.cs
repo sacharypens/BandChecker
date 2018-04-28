@@ -15,6 +15,7 @@ namespace BandChecker
         private static LiedjeViewModel liedjeViewModel = new LiedjeViewModel();
         private static LiedjeDetailWindowViewModel liedjeDetailWindowViewModel = new LiedjeDetailWindowViewModel();
         private static LidViewModel lidViewModel = new LidViewModel();
+        private static LidDetailWindowViewModel lidDetailWindowViewModel = new LidDetailWindowViewModel();
 
         public static MainWindowViewModel MainWindowViewModel
         {
@@ -61,6 +62,14 @@ namespace BandChecker
             get
             {
                 return lidViewModel;
+            }
+        }
+
+        public static LidDetailWindowViewModel LidDetailWindowViewModel
+        {
+            get
+            {
+                return lidDetailWindowViewModel;
             }
         }
     }

@@ -61,7 +61,7 @@ namespace BandChecker.Model
         {
             // SQL statement delete
             string sql = "Delete bandchecker.Band where id = @id";
-
+            //TODO controlleren of band nog liedjes of leden heeft
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new { band.Id });
         }

@@ -15,6 +15,13 @@ namespace BandChecker.Model
         private string instrument;
         private int bandId;
 
+        public Lid() { }
+
+        public Lid(int bandId)
+        {
+            this.bandId = bandId;
+        }
+
         public int Id
         {
             get

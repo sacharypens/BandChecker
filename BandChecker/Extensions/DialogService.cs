@@ -14,6 +14,8 @@ namespace BandChecker.Extensions
 
         Window liedjeDetailWindowView = null;
 
+        Window lidDetailWindowView;
+
         public DialogService() { }
 
         public void ShowDetailDialog()
@@ -41,6 +43,20 @@ namespace BandChecker.Extensions
             if (liedjeDetailWindowView != null)
             {
                 liedjeDetailWindowView.Close();
+            }
+        }
+
+        public void ShowLidDetailDialog()
+        {
+            lidDetailWindowView = new LidDetailWindow();
+            lidDetailWindowView.Show();
+        }
+
+        public void CloseLidDetailDialog()
+        {
+            if(lidDetailWindowView != null)
+            {
+                lidDetailWindowView.Close();
             }
         }
     }

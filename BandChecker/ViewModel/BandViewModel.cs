@@ -101,6 +101,8 @@ namespace BandChecker.ViewModel
                 || message.Type == UpdateFinishedMessage.MessageType.Inserted)
             {
                 LeesBands();
+                
+                Messenger.Default.Send<BandUpdatedMessage>(new BandUpdatedMessage());
             }
         }
 
