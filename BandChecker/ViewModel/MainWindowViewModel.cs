@@ -18,13 +18,6 @@ namespace BandChecker.ViewModel
             set { frameSource = value; NotifyPropertyChanged(); }
         }
 
-        public MainWindowViewModel()
-        {
-            FrameSource = "BandView.xaml";
-            LiedjesCommand = new BaseCommand(GoToLiedjePage);
-            BandsCommand = new BaseCommand(GoToLiedjePage);
-        }
-
         private ICommand liedjesCommand;
         public ICommand LiedjesCommand
         {
@@ -50,6 +43,15 @@ namespace BandChecker.ViewModel
                 bandsCommand = value;
             }
         }
+
+        public MainWindowViewModel()
+        {
+            FrameSource = "LiedjePage.xaml";
+            BandsCommand = new BaseCommand(GoToBandsView);
+            LiedjesCommand = new BaseCommand(GoToLiedjePage);
+            
+        }
+
         public void GoToLiedjePage()
         {
             FrameSource = "LiedjePage.xaml";
