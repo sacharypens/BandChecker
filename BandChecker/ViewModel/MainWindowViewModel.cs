@@ -20,8 +20,9 @@ namespace BandChecker.ViewModel
 
         public MainWindowViewModel()
         {
-            FrameSource = "LiedjePage.xaml";
+            FrameSource = "BandView.xaml";
             LiedjesCommand = new BaseCommand(GoToLiedjePage);
+            BandsCommand = new BaseCommand(GoToLiedjePage);
         }
 
         private ICommand liedjesCommand;
@@ -37,10 +38,28 @@ namespace BandChecker.ViewModel
             }
         }
 
+        private ICommand bandsCommand;
+        public ICommand BandsCommand
+        {
+            get
+            {
+                return bandsCommand;
+            }
+            set
+            {
+                bandsCommand = value;
+            }
+        }
         public void GoToLiedjePage()
         {
-            frameSource = "LiedjePage.xaml";
+            FrameSource = "LiedjePage.xaml";
         }
+
+        public void GoToBandsView()
+        {
+            FrameSource = "BandView.xaml";
+        }
+
     }
 
 

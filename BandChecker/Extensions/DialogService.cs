@@ -12,6 +12,8 @@ namespace BandChecker.Extensions
     {
         Window bandDetailWindowView = null;
 
+        Window liedjeDetailWindowView = null;
+
         public DialogService() { }
 
         public void ShowDetailDialog()
@@ -25,6 +27,20 @@ namespace BandChecker.Extensions
             if(bandDetailWindowView != null)
             {
                 bandDetailWindowView.Close();
+            }
+        }
+
+        public void ShowLiedjeDetailDialog()
+        {
+            liedjeDetailWindowView = new LiedjeDetailWindow();
+            liedjeDetailWindowView.Show();
+        }
+
+        public void CloseLiedjeDetailDialog()
+        {
+            if (liedjeDetailWindowView != null)
+            {
+                liedjeDetailWindowView.Close();
             }
         }
     }

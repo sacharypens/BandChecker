@@ -13,6 +13,13 @@ namespace BandChecker.Model
         private string duurtijd;
         private int bandId;
 
+        public Liedje() { }
+
+        public Liedje(int bandId)
+        {
+            this.bandId = bandId;
+        }
+
         public int Id
         {
             get

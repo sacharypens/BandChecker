@@ -36,7 +36,7 @@ namespace BandChecker.Model
         public void UpdateLiedje(Liedje liedje)
         {
             // SQL statement update
-            string sql = "Update bandchecker.Liedje set naam = @naam, duurtijd = @duurtijd bandId = @bandId where id = @id";
+            string sql = "Update bandchecker.Liedje set naam = @naam, duurtijd = @duurtijd where id = @id";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new
@@ -51,7 +51,7 @@ namespace BandChecker.Model
         public void InsertLiedje(Liedje liedje)
         {
             // SQL statement insert
-            string sql = "Insert into bandchecker.Liedje(naam, duurtijd, bandId) values (@naam, @duurtijd, @bandId)";
+            string sql = "Insert into bandchecker.Liedje(naam, duurtijd, bandId2) values (@naam, @duurtijd, @bandId)";
 
             // Uitvoeren SQL statement en doorgeven parametercollectie
             db.Execute(sql, new

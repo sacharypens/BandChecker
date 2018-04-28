@@ -4,21 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BandChecker.View"
+        DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=MainWindowViewModel}"
         mc:Ignorable="d"
         xmlns:viewmodel="clr-namespace:BandChecker.ViewModel"
         Title="Band Checker" Height="450" Width="800">
+   
     
-    <Window.Resources>
-        <viewmodel:MainWindowViewModel x:Key="MainWindowViewModel"/>
-    </Window.Resources>
-    
-    <DockPanel DataContext="{StaticResource MainWindowViewModel}">
+    <DockPanel>
         <ToolBar DockPanel.Dock="Top" Style="{StaticResource toolbar}">
             <Button Content="Backwards" Style="{StaticResource buttonStyle}"></Button>
             <Button Content="Forwards" Style="{StaticResource buttonStyle}"></Button>
             <Button Content="Liedjes" Style="{StaticResource buttonStyle}" Command="{Binding LiedjesCommand}"></Button>
-            <Button Content="Liedjes" Style="{StaticResource buttonStyle}"></Button>
-            
+            <Button Content="Leden" Style="{StaticResource buttonStyle}"></Button>
+            <Button Content="Bands" Style="{StaticResource buttonStyle}" Command="{Binding BandsCommand}"></Button>
         </ToolBar>
         
         <Frame DockPanel.Dock="Bottom" Source="{Binding FrameSource}" Name="frame" NavigationUIVisibility="Hidden">

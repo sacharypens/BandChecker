@@ -5,14 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BandChecker.View"
       xmlns:viewmodel="clr-namespace:BandChecker.ViewModel"
+      DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=LiedjeViewModel}"
       mc:Ignorable="d" 
+      
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LiedjePage">
 
-    <Page.Resources>
-        <viewmodel:LiedjeViewModel x:Key="LiedjeViewModel"/>
-    </Page.Resources>
-    <Grid Style="{StaticResource gridLiedje}" DataContext="{StaticResource LiedjeViewModel}">
+    <Grid Style="{StaticResource gridLiedje}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
@@ -37,8 +36,8 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Column="2" Grid.Row="0" Style="{StaticResource stackpanelLiedje}" DockPanel.Dock="Right">
-            <Button Style="{StaticResource buttonLiedje}" Content="Wijzig"/>
-            <Button Style="{StaticResource buttonLiedje}" Content="Nieuw liedje"/>
+            <Button Style="{StaticResource buttonLiedje}" Content="Wijzig" Command="{Binding WijzigCommand}"/>
+            <Button Style="{StaticResource buttonLiedje}" Content="Nieuw liedje" Command="{Binding ToevoegenCommand}"/>
             
         </StackPanel>
     </Grid>

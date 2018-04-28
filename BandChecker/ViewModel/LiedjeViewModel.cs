@@ -1,4 +1,5 @@
 ﻿using BandChecker.Extensions;
+using BandChecker.Messages;
 using BandChecker.Model;
 using System;
 using System.Collections.Generic;
@@ -61,9 +62,62 @@ namespace BandChecker.ViewModel
             }
         }
 
+        private ICommand wijzigCommand;
+        public ICommand WijzigCommand
+        {
+            get
+            {
+                return wijzigCommand;
+            }
+            set
+            {
+                wijzigCommand = value;
+
+            }
+        }
+
+        private ICommand verwijderenCommand;
+        public ICommand VerwijderenCommand
+        {
+            get
+            {
+                return verwijderenCommand;
+            }
+            set
+            {
+                verwijderenCommand = value;
+
+            }
+        }
+
+        private ICommand toevoegenCommand;
+        public ICommand ToevoegenCommand
+        {
+            get
+            {
+                return toevoegenCommand;
+            }
+            set
+            {
+                toevoegenCommand = value;
+
+            }
+        }
         public LiedjeViewModel()
         {
             LeesBands();
+
+            dialogService = new DialogService();
+
+            WijzigCommand = new BaseCommand(WijzigLiedje);
+            ToevoegenCommand = new BaseCommand(ToevoegenLiedje);
+
+            Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
+        }
+
+        private void OnMessageReceived(UpdateFinishedMessage message)
+        {
+            dialogService.CloseLiedjeDetailDialog();
             
         }
 
@@ -77,6 +131,24 @@ namespace BandChecker.ViewModel
         {
             LiedjeDataService ds = new LiedjeDataService();
             Liedjes = ds.GetLiedjesByBand(SelectedBand);
+            
+        }
+
+        private void WijzigLiedje()
+        {
+            if (SelectedLiedje != null)
+            {
+                Messenger.Default.Send<Liedje>(SelectedLiedje);
+                dialogService.ShowLiedjeDetailDialog();
+            }
+        }
+
+        private void ToevoegenLiedje()
+        {
+            SelectedLiedje = new Liedje(SelectedBand.Id);
+            Messenger.Default.Send<Liedje>(SelectedLiedje);
+            dialogService.ShowLiedjeDetailDialog();
+            FilterLiedjes();
         }
     }
 }
