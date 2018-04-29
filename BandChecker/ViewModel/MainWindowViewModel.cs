@@ -17,32 +17,6 @@ namespace BandChecker.ViewModel
             get { return frameSource; }
             set { frameSource = value; NotifyPropertyChanged(); }
         }
-
-        private ICommand terugCommand;
-        public ICommand TerugCommand
-        {
-            get
-            {
-                return terugCommand;
-            }
-            set
-            {
-                terugCommand = value;
-            }
-        }
-
-        private ICommand verderCommand;
-        public ICommand VerderCommand
-        {
-            get
-            {
-                return verderCommand;
-            }
-            set
-            {
-                verderCommand = value;
-            }
-        }
         private ICommand liedjesCommand;
         public ICommand LiedjesCommand
         {

@@ -8,6 +8,8 @@
         xmlns:viewmodel="clr-namespace:BandChecker.ViewModel"
         mc:Ignorable="d"
         Title="Banddetails aanpassen" Height="500" Width="500">
+
+
     <Grid Margin="15">
         
         <Grid.ColumnDefinitions>
@@ -17,7 +19,8 @@
         
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
@@ -25,18 +28,22 @@
         </Grid.RowDefinitions>
         
         <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="1" Text="Naam:"/>
-        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedBand.Naam, Mode=TwoWay}"/>
+        <TextBox Style="{StaticResource textboxBandDetail}"
+                 Grid.Column="1" Grid.Row="1" 
+                 Text="{Binding SelectedBand.Naam, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                 Name="TextBoxBandNaam"
+                 />
 
-        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="2" Text="Opgericht:"/>
-        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedBand.Opgericht, Mode=TwoWay}" />
+        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="3" Text="Opgericht:"/>
+        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedBand.Opgericht, Mode=TwoWay}" />
 
-        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="3" Text="Genre:"/>
-        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="3" Text="{Binding SelectedBand.Genre, Mode=TwoWay}" />
+        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="4" Text="Genre:"/>
+        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="4" Text="{Binding SelectedBand.Genre, Mode=TwoWay}" />
 
-        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="4" Text="Omschrijving:"/>
-        <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding SelectedBand.Omschrijving, Mode=TwoWay}" TextWrapping="WrapWithOverflow" />
+        <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="5" Text="Omschrijving:"/>
+        <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding SelectedBand.Omschrijving, Mode=TwoWay}" TextWrapping="WrapWithOverflow" />
 
-        <Button Style="{StaticResource buttonBandDetail}" Grid.Column="1" Grid.Row="5" Command="{Binding UpdateCommand}" Content="Bewaren"/>
-        <Button Style="{StaticResource buttonBandDetailVerwijderen}" Grid.Column="1" Grid.Row="5" Command="{Binding DeleteCommand}" Content="Verwijderen"/>
+        <Button Style="{StaticResource buttonBandDetail}" Grid.Column="1" Grid.Row="6" Command="{Binding UpdateCommand}" Content="Bewaren"/>
+        <Button Style="{StaticResource buttonBandDetailVerwijderen}" Grid.Column="1" Grid.Row="6" Command="{Binding DeleteCommand}" Content="Verwijderen"/>
     </Grid>
 </Window>

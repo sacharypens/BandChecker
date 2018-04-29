@@ -23,7 +23,11 @@
         </Grid.RowDefinitions>
 
         <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="1" Text="Naam:"/>
-        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedLiedje.Naam, Mode=TwoWay}"/>
+        <TextBox
+            Style="{StaticResource textboxBandDetail}"
+            Grid.Column="1" Grid.Row="1"
+            Text="{Binding SelectedLiedje.Naam, Mode=TwoWay, ValidatesOnDataErrors=True}"
+            Name="TextBoxLiedjeNaam"/>
 
         <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="2" Text="Duurtijd:"/>
         <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedLiedje.Duurtijd, Mode=TwoWay}" />
@@ -32,7 +36,7 @@
 
 
 
-        <Button Style="{StaticResource buttonBandDetail}" Grid.Column="1" Grid.Row="3" Command="{Binding UpdateCommand}" Content="Bewaren"/>
-        <Button Style="{StaticResource buttonBandDetailVerwijderen}" Grid.Column="1" Grid.Row="3" Command="{Binding DeleteCommand}" Content="Verwijderen"/>
+        <Button Style="{StaticResource buttonLiedjeDetail}" Grid.Column="1" Grid.Row="3" Command="{Binding UpdateCommand}" Content="Bewaren"/>
+        <Button Style="{StaticResource buttonLiedjeDetailVerwijderen}" Grid.Column="1" Grid.Row="3" Command="{Binding DeleteCommand}" Content="Verwijderen"/>
     </Grid>
 </Window>

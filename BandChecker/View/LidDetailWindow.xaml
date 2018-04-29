@@ -7,6 +7,15 @@
         DataContext="{Binding Source={StaticResource mainViewModelLocator}, Path=LidDetailWindowViewModel}"
         mc:Ignorable="d"
         Title="Liddetails aanpassen" Height="500" Width="500">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid Margin="15">
 
         <Grid.ColumnDefinitions>
@@ -24,10 +33,18 @@
         </Grid.RowDefinitions>
 
         <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="1" Text="Voornaam:"/>
-        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="1" Text="{Binding SelectedLid.Voornaam, Mode=TwoWay}"/>
+        <TextBox 
+            Style="{StaticResource textboxBandDetail}" 
+            Grid.Column="1" Grid.Row="1" 
+            Text="{Binding SelectedLid.Voornaam, Mode=TwoWay, ValidatesOnDataErrors=True}"
+            Name="TextBoxLidVoornaam"/>
 
         <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="2" Text="Naam:"/>
-        <TextBox Style="{StaticResource textboxBandDetail}" Grid.Column="1" Grid.Row="2" Text="{Binding SelectedLid.Naam, Mode=TwoWay}" />
+        <TextBox
+            Style="{StaticResource textboxBandDetail}" 
+            Grid.Column="1" Grid.Row="2" 
+            Text="{Binding SelectedLid.Naam, Mode=TwoWay, ValidatesOnDataErrors=True}" 
+            Name="TextBoxLidNaam"/>
 
         <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="3" Text="Geboortedatum:"/>
         
@@ -35,7 +52,7 @@
         <TextBlock Style="{StaticResource textblockBandDetail}"  Grid.Column="0" Grid.Row="4" Text="Instrumenten:"/>
         <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding SelectedLid.Instrument, Mode=TwoWay}" TextWrapping="WrapWithOverflow" />
 
-        <Button Style="{StaticResource buttonBandDetail}" Grid.Column="1" Grid.Row="5" Command="{Binding UpdateCommand}" Content="Bewaren"/>
-        <Button Style="{StaticResource buttonBandDetailVerwijderen}" Grid.Column="1" Grid.Row="5" Command="{Binding DeleteCommand}" Content="Verwijderen"/>
+        <Button Style="{StaticResource buttonLidDetail}" Grid.Column="1" Grid.Row="5" Command="{Binding UpdateCommand}" Content="Bewaren"/>
+        <Button Style="{StaticResource buttonLidDetailVerwijderen}" Grid.Column="1" Grid.Row="5" Command="{Binding DeleteCommand}" Content="Verwijderen"/>
     </Grid>
 </Window>

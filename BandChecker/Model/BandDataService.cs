@@ -59,11 +59,18 @@ namespace BandChecker.Model
 
         public void DeleteBand(Band band)
         {
-            // SQL statement delete
             string sql = "Delete bandchecker.Band where id = @id";
-            //TODO controlleren of band nog liedjes of leden heeft
-            // Uitvoeren SQL statement en doorgeven parametercollectie
-            db.Execute(sql, new { band.Id });
+
+            LidDataService lidDataService = new LidDataService();
+            ObservableCollection<Lid> leden = lidDataService.GetLedenByBand(band);
+            LiedjeDataService liedjeDataService = new LiedjeDataService();
+            ObservableCollection<Liedje> liedjes = liedjeDataService.GetLiedjesByBand(band);
+            if(leden.Count == 0 && liedjes.Count == 0)
+            {
+                db.Execute(sql, new { band.Id });
+            }
+            
+            
         }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BandChecker.Model
 {
-    class Lid : BaseModel
+    class Lid : BaseModel, IDataErrorInfo
     {
         private int id;
         private string naam;
@@ -103,6 +104,28 @@ namespace BandChecker.Model
             {
                 bandId = value;
                 NotifyPropertyChanged();
+            }
+        }
+
+        public string Error
+        {
+            get
+            {
+                return string.Empty;
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = string.Empty;
+                switch (columnName)
+                {
+                    case "Naam": if (string.IsNullOrEmpty(Naam)) result = "Naam moet ingevuld zijn!"; break;
+                    case "Voornaam": if (string.IsNullOrEmpty(Naam)) result = "Voornaam moet ingevuld zijn!"; break;
+                };
+                return result;
             }
         }
     }
