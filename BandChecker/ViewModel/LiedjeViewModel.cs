@@ -113,6 +113,12 @@ namespace BandChecker.ViewModel
             ToevoegenCommand = new BaseCommand(ToevoegenLiedje);
 
             Messenger.Default.Register<UpdateFinishedMessage>(this, OnMessageReceived);
+            Messenger.Default.Register<BandUpdatedMessage>(this, OnBandUpdatedMessageReceived);
+        }
+
+        private void OnBandUpdatedMessageReceived(BandUpdatedMessage message)
+        {
+            LeesBands();
         }
 
         private void OnMessageReceived(UpdateFinishedMessage message)
@@ -133,6 +139,11 @@ namespace BandChecker.ViewModel
 
         private void FilterLiedjes()
         {
+            if(SelectedBand == null)
+            {
+                SelectedBand = new Band();
+                
+            }
             LiedjeDataService ds = new LiedjeDataService();
             Liedjes = ds.GetLiedjesByBand(SelectedBand);
             
